@@ -1,0 +1,22 @@
+
+locale: "en-US"
+title: "Jekyll RDF"
+description: >- # this means to ignore newlines until "baseurl:"
+  A Jekyll plugin to include RDF data in your static site or build a complete site for your RDF knowledge graph.
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "http://jekyll-rdf.aksw.org" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Build settings
+markdown: kramdown
+theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: "default"
+
+plugins:
+  - jekyll-rdf
+  - jekyll-include-cache
+
+jekyll_rdf:
+    path: "graph.ttl"
+    include_blank: false
+    default_template: "resource.html"
+    restriction: "SELECT ?resourceUri WHERE { ?resourceUri ?p ?o . FILTER regex(str(?resourceUri), \"http://jekyll-rdf.aksw.org/\") }"
